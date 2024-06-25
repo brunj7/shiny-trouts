@@ -10,42 +10,69 @@ ui <- navbarPage(
     ), # END (Page 1) intro tabPanel
     
     # (Page 2) data viz tabPanel ----
-    tabPanel(title =  "Explore the Data",
+    tabPanel(title =  "Explore the Trout Data",
              
              # tabsetPanel to contain tabs for data viz ----
              tabsetPanel(
                  
                  # trout tabPanel ----
-                 tabPanel(title = "Trout",
+                 tabPanel(title = "Trout Plot",
                           
                           # trout sidebarLayout ----
                           sidebarLayout(
                               
                               # trout sidebarPanel ----
                               sidebarPanel(
-                                  
-                                  "trout plot input(s) go here" # REPLACE THIS WITH CONTENT
+                                
+                                # channel type pickerInput ----
+                                pickerInput(inputId = "channel_type_input", label = "Select channel type(s):",
+                                            choices = unique(clean_trout$channel_type),
+                                            selected = c("cascade", "pool"),
+                                            options = pickerOptions(actionsBox = TRUE),
+                                            multiple = TRUE), # END channel type pickerInput
+                                
+                                # section checkboxGroupButtons ----
+                                checkboxGroupButtons(inputId = "section_input", label = "Select a sampling section(s):",
+                                                     choices = c("clear cut forest", "old growth forest"),
+                                                     selected = c("clear cut forest", "old growth forest"),
+                                                     individual = FALSE, justified = TRUE, size = "sm",
+                                                     checkIcon = list(yes = icon("check", lib = "font-awesome"), 
+                                                                      no = icon("xmark", lib = "font-awesome"))), # END section checkboxGroupInput
                                   
                               ), # END trout sidebarPanel
                               
                               # trout mainPanel ----
                               mainPanel(
                                   
-                                  "trout plot output goes here" # REPLACE THIS WITH CONTENT
+                                plotOutput(outputId = "trout_scatterplot_output")
                                   
                               ) # END trout mainPanel
                               
                           ) # END trout sidebarLayout
                           
                  ), # END trout tabPanel 
-                 
-                 # penguin tabPanel ----
-                 tabPanel(title = "Penguins",
+                 tabPanel(title = "Trout Table",
                           
-
+                          # trout sidebarLayout ----
+                          sidebarLayout(
+                            
+                            # trout sidebarPanel ----
+                            sidebarPanel(
+                              
+                              "trout table input(s) go here" # REPLACE THIS WITH CONTENT
+                              
+                            ), # END trout sidebarPanel
+                            
+                            # trout mainPanel ----
+                            mainPanel(
+                              
+                              "trout table output goes here" # REPLACE THIS WITH CONTENT
+                              
+                            ) # END trout mainPanel
+                            
+                          ) # END trout sidebarLayout
                           
-                 ) # END penguin tabPanel
-                 
+                 ), # END trout tabPanel 
              ) # END tabsetPanel
              
     ) # END (Page 2) data viz tabPanel

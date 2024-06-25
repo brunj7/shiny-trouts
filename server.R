@@ -3,8 +3,9 @@ server <- function(input, output) {
   # filter trout data ----
   trout_filtered_df <- reactive({
     
-    clean_trout |>
-      filter(channel_type %in% c(input$channel_type_input))
+    clean_trout %>% 
+      filter(channel_type %in% c(input$channel_type_input)) %>%
+      filter(section %in% c(input$section_input))
     
   })
   
@@ -19,6 +20,8 @@ server <- function(input, output) {
       scale_shape_manual(values = c("cascade" = 15, "riffle" = 17, "isolated pool" = 19,
                                     "pool" = 18, "rapid" = 8, "step (small falls)" = 23,
                                     "side channel" = 25)) +
+      scale_x_continuous(limits = c(40, 260)) +
+      scale_y_continuous(limits = c(0, 120)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
       myCustomTheme()
     
