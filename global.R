@@ -1,7 +1,7 @@
 # LOAD LIBRARIES ----
 library(shiny)
 library(lterdatasampler)
-library(palmerpenguins)
+library(DT)
 library(tidyverse)
 library(shinyWidgets)
 

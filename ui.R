@@ -59,14 +59,14 @@ ui <- navbarPage(
                             # trout sidebarPanel ----
                             sidebarPanel(
                               
-                              "trout table input(s) go here" # REPLACE THIS WITH CONTENT
+                              "See plot tab for selection"
                               
                             ), # END trout sidebarPanel
                             
                             # trout mainPanel ----
                             mainPanel(
                               
-                              "trout table output goes here" # REPLACE THIS WITH CONTENT
+                              DT::DTOutput(outputId = "trout_table_output") 
                               
                             ) # END trout mainPanel
                             

@@ -1,6 +1,6 @@
 server <- function(input, output) {
   
-  # filter trout data ----
+  # filter trout data according to user inputs----
   trout_filtered_df <- reactive({
     
     clean_trout %>% 
@@ -24,6 +24,13 @@ server <- function(input, output) {
       scale_y_continuous(limits = c(0, 120)) +
       labs(x = "Trout Length (mm)", y = "Trout Weight (g)", color = "Channel Type", shape = "Channel Type") +
       myCustomTheme()
+    
+  }) 
+  
+  output$trout_table_output <- DT::renderDT({
+    
+    DT::datatable(trout_filtered_df())
+    
     
   }) 
   
