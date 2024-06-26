@@ -5,7 +5,17 @@ ui <- navbarPage(
     # (Page 1) intro tabPanel ----
     tabPanel(title = "About this App",
              
-             "background info will go here" # REPLACE THIS WITH CONTENT
+             # intro text fluidRow ----
+             fluidRow(
+               
+               # use columns to create white space on sides
+               column(1),
+               column(10, includeMarkdown("text/about.md")),
+               column(1)
+               
+             ), # END intro text fluidRow
+             
+             hr(), # creates light gray horizontal line
              
     ), # END (Page 1) intro tabPanel
     
