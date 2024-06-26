@@ -3,5 +3,6 @@
 .RData
 .Ruserdata
 
+# Folders to ignore
 scratch/
 rsconnect/
