@@ -4,7 +4,7 @@ library(lterdatasampler)
 library(DT)
 library(tidyverse)
 library(shinyWidgets)
-library(rmarkdown)
+library(markdown)
 
 # GGPLOT THEME ----
 myCustomTheme <- function() {
